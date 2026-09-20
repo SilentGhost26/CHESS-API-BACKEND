@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\chessApi.Domain\chessApi.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
