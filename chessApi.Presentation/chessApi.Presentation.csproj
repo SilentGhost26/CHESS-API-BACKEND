@@ -8,7 +8,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.12" />
+      <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.23.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.23.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\chessApi.Application\chessApi.Application.csproj" />
+      <ProjectReference Include="..\chessApi.Infrastructure\chessApi.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
