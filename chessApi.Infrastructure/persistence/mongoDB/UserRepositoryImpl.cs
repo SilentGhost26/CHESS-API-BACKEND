@@ -31,10 +31,12 @@ public class UserRepositoryImpl : IUserRepository
         return UserMapper.ToModel(document);
     }
 
-    public async Task<User> GetById(string id, CancellationToken cancellationToken = default)
+    public async Task<User?> GetById(string id, CancellationToken cancellationToken = default)
     {
-        return UserMapper.ToModel( await _userCollection.Find(u => u.Id == id && !u.IsDeleted)
-            .FirstOrDefaultAsync(cancellationToken));
+        var document = await _userCollection.Find(u => u.Id == id && !u.IsDeleted)
+            .FirstOrDefaultAsync(cancellationToken);
+        if (document == null) return null;
+        return UserMapper.ToModel(document);
     }
 
     public async Task<bool> DeleteById(string id, CancellationToken cancellationToken = default)
@@ -53,10 +55,12 @@ public class UserRepositoryImpl : IUserRepository
         return true;
     }
 
-    public async Task<User> GetByEmail(string email, CancellationToken cancellationToken = default)
+    public async Task<User?> GetByEmail(string email, CancellationToken cancellationToken = default)
     {
-        return UserMapper.ToModel(await _userCollection.Find(u => u.Email == email)
-            .FirstOrDefaultAsync(cancellationToken));
+        var document = await _userCollection.Find(u => u.Email == email)
+            .FirstOrDefaultAsync(cancellationToken);
+        if (document == null) return null;
+        return UserMapper.ToModel(document);
     }
 
     public async Task<User> Update(User user, CancellationToken cancellationToken = default)

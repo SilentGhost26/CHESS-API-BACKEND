@@ -20,7 +20,7 @@ public class UserMapper
         return new User()
         {
             Email = dto.Email,
-            Name = dto.Email,
+            Name = dto.Name,
             Password = dto.Password,
         };
     }

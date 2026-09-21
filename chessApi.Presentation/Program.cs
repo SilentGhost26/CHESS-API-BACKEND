@@ -2,6 +2,8 @@ using System.Text;
 using chessApi.Application.service;
 using chessApi.Application.service.impl;
 using chessApi.Infrastructure;
+using chessApi.security;
+using chessApi.security.impl;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
@@ -61,6 +63,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddSingleton<IJwtTokenGenerator, JwtTokenTokenGenerator>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
